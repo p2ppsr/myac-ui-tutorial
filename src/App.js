@@ -6,7 +6,7 @@ import style from './style'
 import { makeStyles } from '@material-ui/core/styles'
 import GetCertIcon from '@material-ui/icons/GetApp'
 
-import { AuthriteClient, getDecryptedCertificates } from 'authrite-utils'
+import { getDecryptedCertificates } from 'authrite-utils'
 
 import { certificateType, certificateFields } from './myac1Certificate'
 
@@ -38,13 +38,6 @@ export default () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const client = new AuthriteClient(serverURL)
-
-      const identifyResponse = await client.createSignedRequest('/identify', {})
-      if (identifyResponse.status !== 'success' || identifyResponse.certifierPublicKey !== certifierPublicKey) {
-        toast.error('Unexpected Identify Certifier Response. Check certifierPublicKey.')
-        return
-      }
 
       // We can use the babbage sdk to retrieve certificates we already have which
       // were issued by this certifier, of this certificate type, with specific fields:
