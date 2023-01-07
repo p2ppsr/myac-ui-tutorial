@@ -1,17 +1,21 @@
-# Myac UI
+# Myac UI Tutorial
 
-A example user interface for the [Authrite Certifier Tutorial](https://github.com/p2ppsr/tutorial-myac-1).
+This is the repository for the UI of the Myac Authrite Certifier tutorial.
 
-## Setting Up
+Start in the [Myac tutorial documentation](https://projectbabbage.com/docs/babbage-sdk/myac-tutorial).
 
-Clone the repo, then run:
+## Tutorial Structure
 
-```
-npm i
-npm run start
-```
+Branches are used to provide quick access to the state of the code at each step in the tutorial:
 
-Then, your UI will be available on port **3000**.
+| Branch | Tutorial Sequence |
+|---|---|
+| start | Add certifier key and certificate type |
+| identify | Add certifier identify support |
+| create | Add certificate creation support |
+| confirm | Add certificate confirmation |
+| deploy | Add Cloud Run deployment support |
+| master | Completed tutorial |
 
 ## License
 
