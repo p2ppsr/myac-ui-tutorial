@@ -46,20 +46,6 @@ export default () => {
         return
       }
 
-      // If the certifier implements a confirmCertificate route, we can
-      // use it to see if we're already able to provide the certificate
-      // to someone who requests it, with specific field values.
-      // This will fail if we do not authorize the certifier to access the certificate.
-      const confirmResponse = await client.createSignedRequest('/confirmCertificate', { domain, identity })
-
-      if (confirmResponse.status === 'success') {
-        // The certifier has confirmed we already have this certificate.
-        setCertExists(true)
-        return;
-      }
-
-      console.log('confirmCertificate response:', confirmResponse)
-
       // We can use the babbage sdk to retrieve certificates we already have which
       // were issued by this certifier, of this certificate type, with specific fields:
       let certificates = await getDecryptedCertificates({
@@ -87,14 +73,6 @@ export default () => {
         certifierUrl: serverURL,
         certifierPublicKey: certifierPublicKey
       })
-
-      // It is not necessary to confirm the certificate creation in most circumstances.
-      // We do it here for completeness when studying certifier behavior.
-      const confirmStatus = await client.createSignedRequest('/confirmCertificate', { domain, identity })
-      if ('success' === confirmStatus.status)
-        console.log('CONFIRMED')
-      else
-        console.log('POSSIBLE ERROR: confirmCertificate status', confirmStatus)
 
       setResult(certificate)
     } catch (e) {
