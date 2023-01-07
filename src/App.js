@@ -11,7 +11,7 @@ import { AuthriteClient, getDecryptedCertificates } from 'authrite-utils'
 import { certificateType, certificateFields } from './myac1Certificate'
 
   // The public key of the certifier at that URL, must match actual public key.
-  const certifierPublicKey = '025384871bedffb233fdb0b4899285d73d0f0a2b9ad18062a062c01c8bdb2f720a'
+  const certifierPublicKey = '025684945b734e80522f645b9358d4ac5b49e5180444b5911bf8285a7230edee8b'
   const certifierServerURL = 'http://localhost:8081'
 
 const useStyles = makeStyles(style, { name: 'Myac' })
@@ -42,7 +42,7 @@ export default () => {
 
       const identifyResponse = await client.createSignedRequest('/identify', {})
       if (identifyResponse.status !== 'success' || identifyResponse.certifierPublicKey !== certifierPublicKey) {
-        toast.error('Unexpected Identify Certifier Response')
+        toast.error('Unexpected Identify Certifier Response. Check certifierPublicKey.')
         return
       }
 
