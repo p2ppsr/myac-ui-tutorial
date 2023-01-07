@@ -61,20 +61,6 @@ export default () => {
       }
 
       // Don't have a certificate yet. Request a new one.
-      const newCertificateFields = {
-        domain: domain,
-        identity: identity,
-        when: new Date().toISOString(),
-        stake: stake
-      }
-      const certificate = await client.createCertificate({
-        certificateType: certificateType,
-        fieldObject: newCertificateFields,
-        certifierUrl: serverURL,
-        certifierPublicKey: certifierPublicKey
-      })
-
-      setResult(certificate)
     } catch (e) {
       console.error(e)
       if (e.response && e.response.data && e.response.data.description) {
