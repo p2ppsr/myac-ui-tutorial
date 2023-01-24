@@ -6,7 +6,7 @@ import style from './style'
 import { makeStyles } from '@material-ui/core/styles'
 import GetCertIcon from '@material-ui/icons/GetApp'
 
-import { getDecryptedCertificates } from 'authrite-utils'
+import { decryptOwnedCertificates } from 'authrite-utils'
 
 import { certificateType, certificateFields } from './myac1Certificate'
 
@@ -41,9 +41,10 @@ export default () => {
 
       // We can use the babbage sdk to retrieve certificates we already have which
       // were issued by this certifier, of this certificate type, with specific fields:
-      let certificates = await getDecryptedCertificates({
+      let certificates = await decryptOwnedCertificates({
         types: Object.fromEntries([[certificateType, certificateFields]]),
-        certifiers: [certifierPublicKey]
+        certifiers: [certifierPublicKey],
+        callerAgreesToKeepDataSide: true
       })
       // We must implement both field value value checking to determine if
       // we already have a certificate for the current domain and identity values.
