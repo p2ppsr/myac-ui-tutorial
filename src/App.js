@@ -44,7 +44,7 @@ export default () => {
       let certificates = await decryptOwnedCertificates({
         types: Object.fromEntries([[certificateType, certificateFields]]),
         certifiers: [certifierPublicKey],
-        callerAgreesToKeepDataSide: true
+        callerAgreesToKeepDataClientSide: true
       })
       // We must implement both field value value checking to determine if
       // we already have a certificate for the current domain and identity values.
