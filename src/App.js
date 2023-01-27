@@ -6,7 +6,8 @@ import style from './style'
 import { makeStyles } from '@material-ui/core/styles'
 import GetCertIcon from '@material-ui/icons/GetApp'
 
-import { AuthriteClient, decryptOwnedCertificates } from 'authrite-utils'
+import { decryptOwnedCertificates } from 'authrite-utils'
+import { AuthriteClient } from 'authrite-js'
 
 import { certificateType, certificateFields } from './myac1Certificate'
 
