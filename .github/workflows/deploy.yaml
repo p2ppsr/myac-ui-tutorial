@@ -33,7 +33,7 @@ jobs:
           credentials_json: ${{ secrets.gcp_deploy_creds }}
       - uses: google-github-actions/deploy-cloudrun@v0
         with:
-          service: ${{ env.GCR_IMAGE_NAME }}-${{ env.CURRENT_BRANCH }}
+          service: ${{ env.CURRENT_BRANCH =='production' && 'prod-myac-ui' || 'staging-myac-ui' }}
           image: "${{ env.GCR_HOST }}/${{ env.GOOGLE_PROJECT_ID }}/${{ env.GCR_IMAGE_NAME }}:${{ env.CURRENT_BRANCH }}-latest"
           timeout: 3540
           region: us-east4

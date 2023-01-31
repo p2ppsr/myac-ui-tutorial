@@ -13,6 +13,7 @@ import { certificateType, certificateFields } from './myac1Certificate'
 
 import * as dotenv from 'dotenv'
 dotenv.config()
+console.log('process.env', JSON.stringify(process.env))
 
 // The public key of the certifier at that URL, must match actual public key.
 const certifierPublicKey = process.env.CERTIFIER_PUBLIC_KEY
