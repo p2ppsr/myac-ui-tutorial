@@ -16,8 +16,8 @@ dotenv.config()
 console.log('process.env', JSON.stringify(process.env))
 
 // The public key of the certifier at that URL, must match actual public key.
-const certifierPublicKey = process.env.CERTIFIER_PUBLIC_KEY
-const certifierServerURL = process.env.CERTIFIER_SERVER_URL
+const certifierPublicKey = process.env.REACT_APP_CERTIFIER_PUBLIC_KEY
+const certifierServerURL = process.env.REACT_APP_CERTIFIER_SERVER_URL
 
 const useStyles = makeStyles(style, { name: 'Myac' })
 
