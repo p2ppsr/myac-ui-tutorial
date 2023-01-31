@@ -11,9 +11,12 @@ import { AuthriteClient } from 'authrite-js'
 
 import { certificateType, certificateFields } from './myac1Certificate'
 
-  // The public key of the certifier at that URL, must match actual public key.
-  const certifierPublicKey = '025684945b734e80522f645b9358d4ac5b49e5180444b5911bf8285a7230edee8b'
-  const certifierServerURL = 'http://localhost:8081'
+import * as dotenv from 'dotenv'
+dotenv.config()
+
+// The public key of the certifier at that URL, must match actual public key.
+const certifierPublicKey = process.env.CERTIFIER_PUBLIC_KEY
+const certifierServerURL = process.env.CERTIFIER_SERVER_URL
 
 const useStyles = makeStyles(style, { name: 'Myac' })
 
