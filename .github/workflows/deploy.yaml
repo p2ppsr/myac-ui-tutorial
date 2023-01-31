@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-      - run: CI=true CERTIFIER_PUBLIC_KEY=${{ env.CURRENT_BRANCH == 'production' && secrets.PROD_CERTIFIER_PUBLIC_KEY || secrets.STAGING_CERTIFIER_PUBLIC_KEY }} CERTIFIER_SERVER_URL=${{ env.CURRENT_BRANCH == 'master' }} npm run build
+      - run: CI=true REACT_APP_IS_STAGING_CERTIFIER_SERVER_URL=${{ env.CURRENT_BRANCH == 'production' && secrets.PROD_CERTIFIER_SERVER_URL || secrets.STAGING_CERTIFIER_SERVER_URL }} REACT_APP_IS_STAGING_CERTIFIER_PUBLIC_KEY=${{ env.CURRENT_BRANCH == 'production' && secrets.PROD_CERTIFIER_PUBLIC_KEY || secrets.STAGING_CERTIFIER_PUBLIC_KEY }} REACT_APP_IS_STAGING=${{ env.CURRENT_BRANCH == 'master' }} npm run build
       - uses: RafikFarhad/push-to-gcr-github-action@v4.1
         with:
           gcloud_service_key: ${{ secrets.DOCKER_REGISTRY_PUSH_KEY }}
